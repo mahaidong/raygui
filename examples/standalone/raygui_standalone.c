@@ -56,11 +56,10 @@ while (1)
             SDL_Quit();
             return 0;
         }
+        //Draw raygui elements
+        // GuiLabel((Rectangle){ 0, 0, 100, 20 }, "Hello, world!");
+        GuiButton((Rectangle){ screenWidth/2 - 50, screenHeight/2 - 20, 100, 40 }, "Click me!");
     }
-
-    //Draw raygui elements
-    // GuiLabel((Rectangle){ 0, 0, 100, 20 }, "Hello, world!");
-    GuiButton((Rectangle){ screenWidth/2 - 50, screenHeight/2 - 20, 100, 40 }, "Click me!");
 
     SDL_GL_SwapWindow(window);
 }
