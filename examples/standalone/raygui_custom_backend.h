@@ -10,19 +10,8 @@
 *
 **********************************************************************************************/
 
-//#include "my_cool_graphic_api.h"
 
-//----------------------------------------------------------------------------------
-// Defines and Macros
-// TODO: Define input keys required by raygui
-//----------------------------------------------------------------------------------
-#define KEY_RIGHT           262
-#define KEY_LEFT            263
-#define KEY_DOWN            264
-#define KEY_UP              265
-#define KEY_BACKSPACE       259
-#define KEY_ENTER           257
-#define MOUSE_LEFT_BUTTON     0
+//#include "my_cool_graphic_api.h"
 
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -52,7 +41,7 @@ static Vector2 GetMousePosition(void)
     return position;
 }
 
-static int GetMouseWheelMove(void)
+static float GetMouseWheelMove(void)
 {
     // TODO: Mouse wheel movement variation, reseted every frame
     

@@ -1315,7 +1315,7 @@ static bool IsMouseButtonReleased(int button);
 
 static bool IsKeyDown(int key);
 static bool IsKeyPressed(int key);
-static int GetCharPressed(void);         // -- GuiTextBox(), GuiValueBox()
+static int GetCharPressed(void){return 0;};         // -- GuiTextBox(), GuiValueBox()
 //-------------------------------------------------------------------------------
 
 // Drawing required functions
@@ -1596,6 +1596,7 @@ int GuiPanel(Rectangle bounds, const char *text)
 // NOTE: Using GuiToggle() for the TABS
 int GuiTabBar(Rectangle bounds, const char **text, int count, int *active)
 {
+    return 0;
     #define RAYGUI_TABBAR_ITEM_WIDTH    160
 
     int result = -1;
@@ -2233,6 +2234,7 @@ int GuiDropdownBox(Rectangle bounds, const char *text, int *active, bool editMod
 // NOTE: Returns true on ENTER pressed (useful for data validation)
 int GuiTextBox(Rectangle bounds, char *text, int bufferSize, bool editMode)
 {
+    return 0;
     #if !defined(RAYGUI_TEXTBOX_AUTO_CURSOR_COOLDOWN)
         #define RAYGUI_TEXTBOX_AUTO_CURSOR_COOLDOWN  40        // Frames to wait for autocursor movement
     #endif
@@ -3688,6 +3690,7 @@ void GuiSetTooltip(const char *tooltip) { guiTooltipPtr = tooltip; }
 // in that case, custom font image atlas is GRAY+ALPHA and pixel data can be compressed (DEFLATE)
 void GuiLoadStyle(const char *fileName)
 {
+    return 0;
     #define MAX_LINE_BUFFER_SIZE    256
 
     bool tryBinary = false;
@@ -3798,6 +3801,7 @@ void GuiLoadStyle(const char *fileName)
 // Load style default over global style
 void GuiLoadStyleDefault(void)
 {
+    return 0;
     // We set this variable first to avoid cyclic function calls
     // when calling GuiSetStyle() and GuiGetStyle()
     guiStyleLoaded = true;
@@ -4172,6 +4176,7 @@ static void GuiLoadStyleFromMemory(const unsigned char *fileData, int dataSize)
 // Gui get text width considering icon
 static int GetTextWidth(const char *text)
 {
+    return 0;
     #if !defined(ICON_TEXT_PADDING)
         #define ICON_TEXT_PADDING   4
     #endif
@@ -4324,6 +4329,7 @@ const char **GetTextLines(const char *text, int *count)
 // Gui draw text using default font
 static void GuiDrawText(const char *text, Rectangle bounds, int alignment, Color tint)
 {
+    return ;
     #define TEXT_VALIGN_PIXEL_OFFSET(h)  ((int)h%2)     // Vertical alignment for pixel perfect
 
     #if !defined(ICON_TEXT_PADDING)
@@ -4469,6 +4475,7 @@ static void GuiTooltip(Rectangle controlRec)
 {
     if (!guiLocked && guiTooltip && (guiTooltipPtr != NULL) && !guiSliderDragging)
     {
+        /*
         Vector2 textSize = MeasureTextEx(GuiGetFont(), guiTooltipPtr, (float)GuiGetStyle(DEFAULT, TEXT_SIZE), (float)GuiGetStyle(DEFAULT, TEXT_SPACING));
 
         if ((controlRec.x + textSize.x + 16) > GetScreenWidth()) controlRec.x -= (textSize.x + 16 - controlRec.width);
@@ -4482,6 +4489,7 @@ static void GuiTooltip(Rectangle controlRec)
         GuiLabel(RAYGUI_CLITERAL(Rectangle){ controlRec.x, controlRec.y + controlRec.height + 4, textSize.x + 16, GuiGetStyle(DEFAULT, TEXT_SIZE) + 8.f }, guiTooltipPtr);
         GuiSetStyle(LABEL, TEXT_ALIGNMENT, textAlignment);
         GuiSetStyle(LABEL, TEXT_PADDING, textPadding);
+        */
     }
 }
 
@@ -4739,12 +4747,14 @@ static int GuiScrollBar(Rectangle bounds, int value, int minValue, int maxValue)
         {
             if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
             {
+
                 if (CHECK_BOUNDS_ID(bounds, guiSliderActive))
                 {
+                    /*
                     state = STATE_PRESSED;
-
                     if (isVertical) value += (int)(GetMouseDelta().y/(scrollbar.height - slider.height)*valueRange);
                     else value += (int)(GetMouseDelta().x/(scrollbar.width - slider.width)*valueRange);
+                    */
                 }
             }
             else
@@ -4781,8 +4791,10 @@ static int GuiScrollBar(Rectangle bounds, int value, int minValue, int maxValue)
             }
             else if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
             {
+                /*
                 if (isVertical) value += (int)(GetMouseDelta().y/(scrollbar.height - slider.height)*valueRange);
                 else value += (int)(GetMouseDelta().x/(scrollbar.width - slider.width)*valueRange);
+                */
             }
 
             // Keyboard control on mouse hover scrollbar
